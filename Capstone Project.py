@@ -89,9 +89,13 @@ class Morse_Code(decode):
 #Testcode = "ROT13- Uryyb Jbeyq, Reverse - !uoy teem ot eciN ,Caesar - L oryh Frglqj,Morse = .--.   -.--   -   ....   ---   -."
 
 message = input("Enter the Secret Message: ")
-while message:
-    print("reverse, caesar, ROT13, Morse Code")
+quit = True
+while quit:
+    al = ["Reverse","Caesar", "ROT13", "Morse Code"]
+    for xy in al:
+        print("➡ ",xy)
     type = input("Enter the type of cipher: ")
+    type = type.lower()
     if type == "reverse":
         code1 = reverse_cphr(message,type)
         code1.inp()
@@ -100,14 +104,20 @@ while message:
         code1 = caeser_cphr(message,type)
         code1.inp()
         code1.msg()
-    if type == 'ROT13':
+    if type == 'rot13':
         code1 = ROT13_cphr(message,type)
         code1.inp() 
         code1.msg()
         
-    if type == 'Morse Code':
+    if type == 'morse code':
         code1 = Morse_Code(message,type)
         code1.inp() 
         code1.msg()
-    message = input("Enter the Secret Message: ")
+    exit = input("type q to exit & c to continue: ")
+    exit = exit.lower()
+    if exit == 'q':
+        quit = False
+    if exit == 'c':
+        message = input("Enter the Secret Message: ")
+    
     
